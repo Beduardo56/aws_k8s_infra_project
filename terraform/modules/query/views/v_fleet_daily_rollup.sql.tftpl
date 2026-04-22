@@ -1,0 +1,9 @@
+CREATE OR REPLACE VIEW ${gold_db}.v_fleet_daily_rollup AS
+SELECT
+    measured_date,
+    count(DISTINCT device_id) AS device_count,
+    sum(total_kwh)            AS fleet_total_kwh,
+    avg(peak_power_w)         AS fleet_avg_power_w,
+    max(peak_power_w)         AS fleet_peak_power_w
+FROM ${gold_db}.v_daily_device_summary
+GROUP BY measured_date;

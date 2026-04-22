@@ -1,0 +1,16 @@
+# Copy to terraform.tfvars and fill in your values.
+# terraform.tfvars is gitignored.
+
+project_name     = "te-lake"
+region           = "us-east-1"
+budget_limit_usd = 10
+alert_email      = "beduardo56@gmail.com"
+
+# Defaults below are safe for a $10 personal-project demo:
+# glue_cadence_cron             = "cron(0 */3 * * ? *)"
+# firehose_buffer_size_mb       = 128
+# firehose_buffer_seconds       = 300
+# athena_bytes_scanned_cutoff   = 1073741824  # 1 GiB
+# watermark_hours               = 6
+# bronze_retention_days         = 7
+# athena_results_retention_days = 3
