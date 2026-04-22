@@ -1,0 +1,15 @@
+CREATE OR REPLACE VIEW ${gold_db}.v_daily_device_summary AS
+SELECT
+    device_id,
+    measured_date,
+    min(voltage_a)                         AS min_voltage,
+    avg(voltage_a)                         AS avg_voltage,
+    max(voltage_a)                         AS max_voltage,
+    max(threephase_active_power)           AS peak_power_w,
+    sum(threephase_active_power) / 60000.0 AS total_kwh,
+    count(*)                               AS measurement_count,
+    avg(power_factor_a)                    AS avg_power_factor
+FROM ${silver_db}.${silver_table}
+WHERE voltage_a IS NOT NULL
+  AND threephase_active_power IS NOT NULL
+GROUP BY device_id, measured_date;

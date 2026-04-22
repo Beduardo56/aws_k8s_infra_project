@@ -1,0 +1,11 @@
+CREATE OR REPLACE VIEW ${gold_db}.v_hourly_energy AS
+SELECT
+    device_id,
+    measured_date,
+    hour(measured_at)                     AS hour_of_day,
+    avg(threephase_active_power)          AS avg_active_power_w,
+    avg(threephase_active_power) / 1000.0 AS kwh,
+    count(*)                              AS sample_count
+FROM ${silver_db}.${silver_table}
+WHERE threephase_active_power IS NOT NULL
+GROUP BY device_id, measured_date, hour(measured_at);
