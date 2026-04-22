@@ -1,0 +1,40 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+!*.tfvars.example
+.terraform.lock.hcl
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Editors
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# AWS / secrets
+.env
+.aws/
+credentials
+*.pem
+*.key
+
+# OS
+Thumbs.db
+.claude/*
+!.claude/sdd/
+.claude/sdd/*
+!.claude/sdd/archive/
+!.claude/sdd/templates/
